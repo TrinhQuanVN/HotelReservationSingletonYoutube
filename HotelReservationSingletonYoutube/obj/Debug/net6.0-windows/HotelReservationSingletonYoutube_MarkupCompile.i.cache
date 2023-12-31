@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
 D:\C#\project\WPF\HotelReservationSingletonYoutube_ns\HotelReservationSingletonYoutube\App.xaml
-11407045341
+3-651115779
 
-10-1037279411
+121683664570
 194618410957
-MainWindow.xaml;
+MainWindow.xaml;Views\MakeReservationView.xaml;Views\ReservationListingView.xaml;
 
-False
+True
 

@@ -53,7 +53,8 @@ namespace HotelReservationSingletonYoutube.Views {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/HotelReservationSingletonYoutube;component/views/makereservationview.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/HotelReservationSingletonYoutube;V1.0.0.0;component/views/makereservationview.xa" +
+                    "ml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\Views\MakeReservationView.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

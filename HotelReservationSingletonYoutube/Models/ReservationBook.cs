@@ -1,7 +1,11 @@
 ﻿using HotelReservationSingletonYoutube.Exceptions;
+using HotelReservationSingletonYoutube.Services.ReservationConflictValidators;
+using HotelReservationSingletonYoutube.Services.ReservationCreators;
+using HotelReservationSingletonYoutube.Services.ReservationProvider;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -9,28 +13,32 @@ namespace HotelReservationSingletonYoutube.Models
 {
     public class ReservationBook
     {
-        private readonly List<Reservation> reservations;
+        private readonly IReservationProvider _reservationProvider;
+        private readonly IReservationCreator _reservationCreator;
+        private readonly IReservationConflictValidator _reservationConflictValidator;
 
-        public ReservationBook()
+        public ReservationBook(IReservationProvider reservationProvider, IReservationCreator reservationCreator, IReservationConflictValidator reservationConflictValidator)
         {
-            this.reservations = new List<Reservation>();
+            _reservationProvider = reservationProvider;
+            _reservationCreator = reservationCreator;
+            _reservationConflictValidator = reservationConflictValidator;
         }
 
-        public IEnumerable<Reservation> GetReservations() => reservations;
-        public IEnumerable<Reservation> GetReservations(string userName)
+        public async Task<IEnumerable<Reservation>> GetReservations() => await _reservationProvider.GetReservations();
+        //public IEnumerable<Reservation> GetReservations(string userName)
+        //{
+        //    return new IEnumerable<Reservation>();
+        //    return reservations.Where(x => x.UserName == userName).ToList();
+        //}
+        public async Task AddReservations(Reservation reservation)
         {
-            return reservations.Where(x => x.UserName == userName).ToList();
-        }
-        public void AddReservations(Reservation reservation)
-        {
-            foreach (var item in reservations)
+            var reservationConflict = await _reservationConflictValidator.GetReservationConflict(reservation);
+            if (reservationConflict != null)
             {
-                if (item.Conflicts(reservation))
-                {
-                    throw new ReservationConflictException(item, reservation);
-                }
+                throw new ReservationConflictException(reservationConflict, reservation);
             }
-            reservations.Add(reservation);
+            
+            await _reservationCreator.CreateReservation(reservation);
         }
 
     }

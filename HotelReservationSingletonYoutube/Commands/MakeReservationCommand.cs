@@ -12,7 +12,7 @@ using System.Windows;
 
 namespace HotelReservationSingletonYoutube.Commands
 {
-    public class MakeReservationCommand : CommandBase
+    public class MakeReservationCommand : AsyncCommandBase
     {
         private readonly MakeReservationViewModel viewModel;
         private readonly Hotel hotel;
@@ -30,7 +30,9 @@ namespace HotelReservationSingletonYoutube.Commands
         {
             return !string.IsNullOrEmpty(viewModel.Username) && viewModel.FloorNumber>0 && base.CanExecute(parameter);
         }
-        public override void Execute(object? parameter)
+
+
+        public  override async Task ExecuteAsync(object? parameter)
         {
             var reservation = new Reservation(
                     new RoomID(viewModel.RoomNumber, viewModel.FloorNumber),
@@ -40,7 +42,7 @@ namespace HotelReservationSingletonYoutube.Commands
                     );
             try
             {
-                hotel.MakeReservation(reservation);
+                await  hotel.MakeReservation(reservation);
                 MessageBox.Show("Successfully reserved room.", "Success",
                    MessageBoxButton.OK, MessageBoxImage.Information);
 
@@ -52,7 +54,14 @@ namespace HotelReservationSingletonYoutube.Commands
                 MessageBox.Show("This room is already taken.", "Error",
                     MessageBoxButton.OK, MessageBoxImage.Error);
             }
+            catch (Exception)
+            {
+                MessageBox.Show("Failed to make reservation.", "Error",
+                    MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
+
+
         private void OnViewModelPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             if (e.PropertyName == nameof(MakeReservationViewModel.Username) ||

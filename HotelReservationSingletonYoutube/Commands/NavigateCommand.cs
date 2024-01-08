@@ -16,7 +16,7 @@ namespace HotelReservationSingletonYoutube.Commands
             this.navigationService = navigationService;
         }
 
-        public override void Execute(object? parameter)
+        public override void ExecuteAsync(object? parameter)
         {
             navigationService.Navigate();
         }

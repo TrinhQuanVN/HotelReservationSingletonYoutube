@@ -11,14 +11,14 @@ namespace HotelReservationSingletonYoutube.Models
         public string Name { get; }
         private readonly ReservationBook book;
 
-        public Hotel(string name)
+        public Hotel(string name, ReservationBook reservationBook)
         {
             Name = name;
-            this.book = new ReservationBook();
+            this.book = reservationBook;
         }
 
-        public IEnumerable<Reservation> GetReservations() => book.GetReservations();
-        public IEnumerable<Reservation> GetReservations(string userName) => book.GetReservations(userName);
-        public void MakeReservation(Reservation reservation)=> book.AddReservations(reservation);
+        public async Task<IEnumerable<Reservation>> GetReservations() => await book.GetReservations();
+        //public IEnumerable<Reservation> GetReservations(string userName) => book.GetReservations(userName);
+        public async Task MakeReservation(Reservation reservation)=> await book.AddReservations(reservation);
     }
 }

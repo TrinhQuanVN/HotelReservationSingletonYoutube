@@ -4,10 +4,20 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:MyViews="clr-namespace:HotelReservationSingletonYoutube.Views"
+        xmlns:vms="clr-namespace:HotelReservationSingletonYoutube.ViewModels"
         xmlns:local="clr-namespace:HotelReservationSingletonYoutube"
         mc:Ignorable="d"
         Title="Reservation" Height="450" Width="800">
     <Grid>
-        <MyViews:MakeReservationView/>
+        <Grid.Resources>
+            <DataTemplate DataType="{x:Type vms:ReservationListingViewModel}">
+                <MyViews:ReservationListingView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type vms:MakeReservationViewModel}">
+                <MyViews:MakeReservationView/>
+            </DataTemplate>
+        </Grid.Resources>
+        
+        <ContentControl Content="{Binding CurrentViewModel}"/>
     </Grid>
 </Window>

@@ -4,16 +4,16 @@
 winexe
 C#
 .cs
-D:\C#\project\WPF\HotelReservationSingletonYoutube_ns\HotelReservationSingletonYoutube\obj\Debug\net6.0-windows\
+D:\Code\CSharpWPF\HotelReservationYoutubeSingleton\HotelReservationSingletonYoutube\HotelReservationSingletonYoutube\obj\Debug\net6.0-windows\
 HotelReservationSingletonYoutube
 none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
-D:\C#\project\WPF\HotelReservationSingletonYoutube_ns\HotelReservationSingletonYoutube\App.xaml
+D:\Code\CSharpWPF\HotelReservationYoutubeSingleton\HotelReservationSingletonYoutube\HotelReservationSingletonYoutube\App.xaml
 3-651115779
 
-361662621395
-212-1945299377
+37227860886
+212-1330146658
 MainWindow.xaml;Views\MakeReservationView.xaml;Views\ReservationListingView.xaml;
 
 False

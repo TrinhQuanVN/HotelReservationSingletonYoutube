@@ -22,6 +22,15 @@ namespace HotelReservationSingletonYoutube.ViewModels
         public ICommand MakeReservation { get; }
         public ICommand LoadReservationsCommand { get; }
 
+        private bool _isLoading;
+
+        public bool IsLoading
+        {
+            get { return _isLoading; }
+            set { _isLoading = value; OnPropertyChanged(nameof(IsLoading)); }
+        }
+
+
         public ReservationListingViewModel(HotelStore hotelStore, NavigationService navigationService)
         {
             _hotelStore = hotelStore;

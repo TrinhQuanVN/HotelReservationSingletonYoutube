@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "D:\\C#\\project\\WPF\\HotelReservationSingletonYoutube_ns\\HotelReservationSingletonYoutube\\HotelReservationSingletonYoutube.csproj": {}
+    "D:\\Code\\CSharpWPF\\HotelReservationYoutubeSingleton\\HotelReservationSingletonYoutube\\HotelReservationSingletonYoutube\\HotelReservationSingletonYoutube.csproj": {}
   },
   "projects": {
-    "D:\\C#\\project\\WPF\\HotelReservationSingletonYoutube_ns\\HotelReservationSingletonYoutube\\HotelReservationSingletonYoutube.csproj": {
+    "D:\\Code\\CSharpWPF\\HotelReservationYoutubeSingleton\\HotelReservationSingletonYoutube\\HotelReservationSingletonYoutube\\HotelReservationSingletonYoutube.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\C#\\project\\WPF\\HotelReservationSingletonYoutube_ns\\HotelReservationSingletonYoutube\\HotelReservationSingletonYoutube.csproj",
+        "projectUniqueName": "D:\\Code\\CSharpWPF\\HotelReservationYoutubeSingleton\\HotelReservationSingletonYoutube\\HotelReservationSingletonYoutube\\HotelReservationSingletonYoutube.csproj",
         "projectName": "HotelReservationSingletonYoutube",
-        "projectPath": "D:\\C#\\project\\WPF\\HotelReservationSingletonYoutube_ns\\HotelReservationSingletonYoutube\\HotelReservationSingletonYoutube.csproj",
+        "projectPath": "D:\\Code\\CSharpWPF\\HotelReservationYoutubeSingleton\\HotelReservationSingletonYoutube\\HotelReservationSingletonYoutube\\HotelReservationSingletonYoutube.csproj",
         "packagesPath": "C:\\Users\\trinh\\.nuget\\packages\\",
-        "outputPath": "D:\\C#\\project\\WPF\\HotelReservationSingletonYoutube_ns\\HotelReservationSingletonYoutube\\obj\\",
+        "outputPath": "D:\\Code\\CSharpWPF\\HotelReservationYoutubeSingleton\\HotelReservationSingletonYoutube\\HotelReservationSingletonYoutube\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
           "C:\\Users\\trinh\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -22,6 +26,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -74,7 +79,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     }

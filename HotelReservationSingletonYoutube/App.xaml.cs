@@ -24,6 +24,7 @@ namespace HotelReservationSingletonYoutube
     public partial class App : Application
     {
         private readonly Hotel hotel;
+        private readonly HotelStore hotelStore;
         private readonly NavigationStore navigationStore;
         private const string CONNECTIONSTRING = "Data source=reservation.db";
         private readonly ReservationDbContextFactory dbContextFactory;
@@ -35,6 +36,7 @@ namespace HotelReservationSingletonYoutube
             var reservationConflictValidation = new ReservationConflictValidator(dbContextFactory);
             var reservationBook = new ReservationBook(reservationProvider, reservationCreator, reservationConflictValidation);
             hotel = new Hotel("My hotel",reservationBook);
+            hotelStore = new HotelStore(hotel);
             navigationStore = new NavigationStore();
         }
         protected override void OnStartup(StartupEventArgs e)
@@ -56,12 +58,12 @@ namespace HotelReservationSingletonYoutube
 
         private ViewModelBase CreateReservationListingViewModel()
         {
-            return new ReservationListingViewModel(hotel, new NavigationService(navigationStore, CreateMakeReservationViewModel));
+            return ReservationListingViewModel.LoadViewModel(hotelStore, new NavigationService(navigationStore, CreateMakeReservationViewModel));
         }
 
         private ViewModelBase CreateMakeReservationViewModel()
         {
-            return new MakeReservationViewModel(hotel, new NavigationService(navigationStore, CreateReservationListingViewModel));
+            return new MakeReservationViewModel(hotelStore, new NavigationService(navigationStore, CreateReservationListingViewModel));
         }
     }
 }

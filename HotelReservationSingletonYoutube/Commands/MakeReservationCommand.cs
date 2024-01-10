@@ -1,6 +1,7 @@
 ﻿using HotelReservationSingletonYoutube.Exceptions;
 using HotelReservationSingletonYoutube.Models;
 using HotelReservationSingletonYoutube.Services;
+using HotelReservationSingletonYoutube.Stores;
 using HotelReservationSingletonYoutube.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -15,14 +16,14 @@ namespace HotelReservationSingletonYoutube.Commands
     public class MakeReservationCommand : AsyncCommandBase
     {
         private readonly MakeReservationViewModel viewModel;
-        private readonly Hotel hotel;
+        private readonly HotelStore hotelStore;
         private readonly NavigationService navigationService;
         
 
-        public MakeReservationCommand(MakeReservationViewModel viewModel, Hotel hotel,NavigationService navigationService)
+        public MakeReservationCommand(MakeReservationViewModel viewModel, HotelStore hotelStore,NavigationService navigationService)
         {
             this.viewModel = viewModel;
-            this.hotel = hotel;
+            this.hotelStore = hotelStore;
             this.navigationService = navigationService;
             viewModel.PropertyChanged += OnViewModelPropertyChanged;
         }
@@ -42,7 +43,7 @@ namespace HotelReservationSingletonYoutube.Commands
                     );
             try
             {
-                await  hotel.MakeReservation(reservation);
+                await hotelStore.MakeReservation(reservation);
                 MessageBox.Show("Successfully reserved room.", "Success",
                    MessageBoxButton.OK, MessageBoxImage.Information);
 
@@ -54,9 +55,9 @@ namespace HotelReservationSingletonYoutube.Commands
                 MessageBox.Show("This room is already taken.", "Error",
                     MessageBoxButton.OK, MessageBoxImage.Error);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                MessageBox.Show("Failed to make reservation.", "Error",
+                MessageBox.Show("Failed to make reservation." + Environment.NewLine + $"{ex.Message}", "Error",
                     MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }

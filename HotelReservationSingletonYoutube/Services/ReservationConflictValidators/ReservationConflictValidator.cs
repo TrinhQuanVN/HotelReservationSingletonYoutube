@@ -19,11 +19,18 @@ namespace HotelReservationSingletonYoutube.Services.ReservationConflictValidator
             _dbContextFactory = dbContextFactory;
         }
 
-        public async Task<Reservation> GetReservationConflict(Reservation reservation)
+        public async Task<Reservation?> GetReservationConflict(Reservation reservation)
         {
             using (var context = _dbContextFactory.CreateDbContext())
             {
-                return await context.Reservations.Select(r => ToReservation(r)).FirstOrDefaultAsync(r => r.Conflicts(reservation));
+                var reservationDTO =  await context.Reservations
+                    .Where(r=> r.FloorNumber==reservation.RoomID.FloorNumber)
+                    .Where(r=> r.RoomNumber == reservation.RoomID.RoomNumber)
+                    .Where(r=> r.StartDate < reservation.EndDate)
+                    .Where(r => r.EndDate > reservation.StartDate)
+                    .FirstOrDefaultAsync();
+                if (reservationDTO == null) return null;
+                return ToReservation(reservationDTO);
             }
 
         }

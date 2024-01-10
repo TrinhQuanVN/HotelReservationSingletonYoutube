@@ -14,7 +14,7 @@ namespace HotelReservationSingletonYoutube.Stores
 		public ViewModelBase CurrentViewModel
 		{
 			get { return currentViewModel; }
-			set { currentViewModel = value; OnCurrentViewModelChanged(); }
+			set { currentViewModel?.Dispose(); currentViewModel = value; OnCurrentViewModelChanged(); }
 		}
         public event Action CurrentViewModelChanged;
         private void OnCurrentViewModelChanged()

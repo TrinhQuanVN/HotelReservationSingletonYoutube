@@ -24,18 +24,20 @@ namespace HotelReservationSingletonYoutube.Commands
         public override async Task ExecuteAsync(object parameter)
         {
             _viewModel.IsLoading = true;
+            _viewModel.ErrorMessage = string.Empty;
             try
             {
                 await _hotelStore.Load();
+
+                //throw new Exception();
 
                 await Task.Delay(2000);
 
                 _viewModel.UpdateReservations(_hotelStore.Reservations);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                MessageBox.Show("Failed to load reservations." +Environment.NewLine + $"{ex.Message}", "Error",
-                   MessageBoxButton.OK, MessageBoxImage.Error);
+                _viewModel.ErrorMessage = "Failed to load reservations.";
             }
             _viewModel.IsLoading = false;
         }

@@ -11,7 +11,7 @@ namespace HotelReservationSingletonYoutube.Stores
     {
         private readonly List<Reservation> _reservation;
         private readonly Hotel _hotel;
-        private readonly Lazy<Task> _initializeLazy;
+        private Lazy<Task> _initializeLazy;
 
         public event Action<Reservation> ReservationMade;
 
@@ -25,7 +25,14 @@ namespace HotelReservationSingletonYoutube.Stores
         public IEnumerable<Reservation> Reservations => _reservation;
         public async Task Load()
         {
-            await _initializeLazy.Value;
+            try
+            {
+                await _initializeLazy.Value;
+            }
+            catch (Exception)
+            {
+                _initializeLazy = new Lazy<Task>(Initialize);
+            }
         }
         public async Task MakeReservation(Reservation reservation)
         {

@@ -47,6 +47,8 @@ namespace HotelReservationSingletonYoutube.ViewModels
                 OnPropertyChanged(nameof(StartDate));
 
                 ClearError(nameof(StartDate));
+                ClearError(nameof(EndDate));
+
                 if (EndDate < StartDate)
                 {
                     AddError(nameof(StartDate), "The start date cannot be after the end date.");
@@ -65,6 +67,7 @@ namespace HotelReservationSingletonYoutube.ViewModels
                 OnPropertyChanged(nameof(EndDate));
 
                 ClearError(nameof(EndDate));
+                ClearError(nameof(StartDate));
                 if (EndDate < StartDate)
                 {
                     AddError(nameof(EndDate), "The end date cannot be before the start date.");

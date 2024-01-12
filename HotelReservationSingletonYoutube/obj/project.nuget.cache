@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "nYyuPraK5zWjbZiggzfDRc/WxPZD/UXde5KK8BQJTQeTcaUuv/0XJUsld31pqwNd48hIZpoC0HjFr8pkiXPw7g==",
+  "dgSpecHash": "vyZ0LDA9PgPId2mLvlHP4nCEDjBTP8cRypn/U6TD0v0xMPbx8Xmz9yEwHU4yALSrJNpjh8CEj3CB0MjGu9ViKg==",
   "success": true,
-  "projectFilePath": "D:\\Code\\CSharpWPF\\HotelReservationYoutubeSingleton\\HotelReservationSingletonYoutube\\HotelReservationSingletonYoutube\\HotelReservationSingletonYoutube.csproj",
+  "projectFilePath": "D:\\C#\\project\\WPF\\HotelReservationSingletonYoutube_ns\\HotelReservationSingletonYoutube\\HotelReservationSingletonYoutube.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\trinh\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\trinh\\.nuget\\packages\\microsoft.data.sqlite.core\\6.0.25\\microsoft.data.sqlite.core.6.0.25.nupkg.sha512",
